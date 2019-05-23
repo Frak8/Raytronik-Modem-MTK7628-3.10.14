@@ -1,0 +1,28 @@
+
+<%
+	local disp = require "luci.dispatcher"
+
+	local request  = disp.context.path
+
+	local category = request[1]
+
+	local tree = disp.node()
+
+	local categories = disp.node_childs(tree)
+%>
+   <footer><a href="http://www.raytronik.ir/">All rights reserved with Raytronik Co.-www.raytronik.ir </a>
+
+
+    <% if #categories > 1 then %>
+     <ul class="breadcrumb pull-right" id="modemenu">
+	    <% for i, r in ipairs(categories) do %>
+		    <li<% if request[1] == r then %> class="active"<%end%>><a href="<%=controller%>/<%=r%>/"><%=striptags(translate(tree.nodes[r].title))%></a> <span class="divider">|</span></li>
+	    <% end %>
+     </ul>
+    <% end %>
+   </footer>
+   </div>
+  </div>
+ </body>
+</html>
+

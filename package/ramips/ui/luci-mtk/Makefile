@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-LUCI_TOPDIR=src_logo
+LUCI_TOPDIR=src_raytronik
 
 PKG_NAME:=luci
 PKG_RELEASE:=1
@@ -365,7 +365,7 @@ $(eval $(call collection,ssl,\
 
 $(eval $(call collection,light,\
 	Minimum package set using only admin mini and the standard theme,\
-	+uhttpd +luci-mod-admin-mini +luci-theme-openwrt @BROKEN))
+	+uhttpd +luci-mod-admin-mini +luci-theme-openwrt +luci-theme-rosy @BROKEN))
 
 
 ### Compile ###

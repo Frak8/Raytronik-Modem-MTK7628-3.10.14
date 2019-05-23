@@ -22,7 +22,7 @@ enable_mt7628() {
 
 detect_mt7628() {
 #	detect_ralink_wifi mt7628 mt7628
-	ssid=mt7628-`ifconfig eth0 | grep HWaddr | cut -c 51- | sed 's/://g'`
+	ssid=Raytronik-`ifconfig eth0 | grep HWaddr | cut -c 51- | sed 's/://g'`
 	cd /sys/module/
 	[ -d $module ] || return
 	[ -e /etc/config/wireless ] && return

@@ -1,0 +1,23 @@
+#!/bin/sh
+module_exist()
+
+{
+ls -l /dev/ttyUSB2 >> /dev/null 2>&1
+if [  $? -eq 1 ]
+then
+   echo "Present"
+else
+   echo "Absent"
+fi
+
+
+}
+
+while getopts ":pnm" option; do
+  case $option in
+    m)  ls -l /dev/ttyUSB2 >> /dev/null 2>&1 && echo "Present"; exit ;;
+    p) string=$(grep +CSPN: /tmp/providername) && expr match "$string" '.*\("[A-Za-z]*."\)'; exit ;;
+    n) string2=$(grep +CPSI: /tmp/signal2) && expr match "$string2" '.*\( [A-Za-z]*.\)'; exit ;;
+    ?) echo "error: option -$OPTARG is not implemented"; exit ;;
+  esac
+done

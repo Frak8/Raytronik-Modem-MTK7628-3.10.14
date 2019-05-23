@@ -187,7 +187,8 @@ ucidef_set_interface_wan() {
 	uci batch <<EOF
 set network.wan='interface'
 set network.wan.ifname='$ifname'
-set network.wan.proto='dhcp'
+set network.wan.proto='3g'
+set network.wan.device='/dev/ttyUSB2'
 set network.wan6='interface'
 set network.wan6.ifname='@wan'
 set network.wan6.proto='dhcpv6'
