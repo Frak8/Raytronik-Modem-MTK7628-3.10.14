@@ -1,0 +1,25 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2009-2012 OpenWrt.org
+
+START=98
+NGINX_BIN=/usr/sbin/nginx
+ENV_CONF=/opt/bf/scripts/env_config.sh
+start() {
+	$ENV_CONF
+	mkdir -p /var/log/nginx
+	mkdir -p /var/lib/nginx
+	$NGINX_BIN
+}
+
+stop() {
+	$NGINX_BIN -s stop
+}
+
+reload() {
+	$NGINX_BIN -s reload
+}
+
+shutdown() {
+	$NGINX_BIN -s quit
+}
+

@@ -1,0 +1,16 @@
+
+config wifi-device 'mt7628'
+	option type 'mt7628'
+	option vendor 'ralink'
+	option band '2.4G'
+	option autoch '2'
+	option channel '0'
+
+config wifi-iface
+	option device 'mt7628'
+	option ifname 'ra0'
+	option network 'lan'
+	option mode 'ap'
+	option key '12345678'
+	option encryption 'none'
+	option ssid 'mt7628_wifi'

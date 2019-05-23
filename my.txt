@@ -1,0 +1,177 @@
+16,17d15
+< HOSTFILE="/tmp/hosts/dhcp"
+< TRUSTANCHORSFILE="/usr/share/dnsmasq/trust-anchors.conf"
+38,60d35
+< dhcp_check() {
+< 	local ifname="$1"
+< 	local stamp="/var/run/dnsmasq.$ifname.dhcp"
+< 	local rv=0
+< 
+< 	[ -s "$stamp" ] && return $(cat "$stamp")
+< 
+< 	udhcpc -n -q -s /bin/true -t 1 -i "$ifname" >&- && rv=1 || rv=0
+< 
+< 	[ $rv -eq 1 ] && \
+< 		logger -t dnsmasq \
+< 			"found already running DHCP-server on interface '$ifname'" \
+< 			"refusing to start, use 'option force 1' to override"
+< 
+< 	echo $rv > "$stamp"
+< 	return $rv
+< }
+< 
+< log_once() {
+< 	pidof dnsmasq >/dev/null || \
+< 		logger -t dnsmasq "$@"
+< }
+< 
+163c138
+< 	mkdir -p /tmp/hosts /tmp/dnsmasq.d
+---
+> 	mkdir -p /tmp/hosts
+165d139
+< 	xappend "--conf-dir=/tmp/dnsmasq.d"
+170c144
+< 		log_once \
+---
+> 		logger -t dnsmasq \
+178c152
+< 			log_once "Allowing 127.0.0.0/8 responses"
+---
+> 			logger -t dnsmasq "Allowing 127.0.0.0/8 responses"
+183c157
+< 			log_once "Allowing RFC1918 responses for domain $1"
+---
+> 			logger -t dnsmasq "Allowing RFC1918 responses for domain $1"
+190,196d163
+< 	config_get_bool dnssec "$cfg" dnssec 0
+< 	[ "$dnssec" -gt 0 ] && {
+< 		xappend "--conf-file=$TRUSTANCHORSFILE"
+< 		xappend "--dnssec"
+< 		append_bool "$cfg" dnsseccheckunsigned "--dnssec-check-unsigned"
+< 	}
+< 
+296,300d262
+< 	config_get_bool dns "$cfg" dns 0
+< 	[ "$dns" = "1" -a -n "$ip" -a -n "$name" ] && {
+< 		echo "$ip $name${DOMAIN:+.$DOMAIN}" >> $HOSTFILE
+< 	}
+< 
+302,307c264
+< 	if [ -n "$mac" ]; then
+< 		# --dhcp-host=00:20:e0:3b:13:af,192.168.0.199,lap
+< 		macs=""
+< 		for m in $mac; do append macs "$m" ","; done
+< 	else
+< 		# --dhcp-host=lap,192.168.0.199
+---
+> 	[ -z "$mac" ] && {
+309c266
+< 		macs="$name"
+---
+> 		mac="$name"
+311c268,271
+< 	fi
+---
+> 	}
+> 
+> 	macs=""
+> 	for m in $mac; do append macs "$m" ","; done
+378,380d337
+< 	config_get dhcpv4 "$cfg" dhcpv4
+< 	[ "$dhcpv4" != "disabled" ] || return 0
+< 
+384,386c341,342
+< 	network_get_subnet subnet "$net" || return 0
+< 	network_get_device ifname "$net" || return 0
+< 	network_get_protocol proto "$net" || return 0
+---
+> 	config_get ifname "$net" ifname
+> 	[ -n "$ifname" ] || return 0
+388c344,345
+< 	[ "$cachelocal" = "0" ] && network_get_dnsserver dnsserver "$net" && {
+---
+> 	config_get dnsserver "$net" dns
+> 	[ "$cachelocal" = "0" -a -n "$dnsserver" ] && {
+394c351
+< 	# Do not support non-static interfaces for now
+---
+> 	config_get proto "$net" proto
+397,398c354,356
+< 	# Override interface netmask with dhcp config if applicable
+< 	config_get netmask "$cfg" netmask "${subnet##*/}"
+---
+> 	config_get ipaddr "$net" ipaddr
+> 	config_get netmask "$cfg" netmask
+> 	[ -n "$netmask" ] || config_get netmask "$net" netmask
+402c360,367
+< 	[ $force -gt 0 ] || dhcp_check "$ifname" || return 0
+---
+> 	[ $force -gt 0 ] || {
+> 		udhcpc -n -q -s /bin/true -t 1 -i $ifname >&- && {
+> 			logger -t dnsmasq \
+> 				"found already running DHCP-server on interface '$ifname'" \
+> 				"refusing to start, use 'option force 1' to override"
+> 			return 0
+> 		}
+> 	}
+414c379
+< 	eval "$(ipcalc.sh "${subnet%%/*}" $netmask $start $limit)"
+---
+> 	eval "$(ipcalc.sh $ipaddr $netmask $start $limit)"
+446c411,414
+< 		record="${record:+$record }$name"
+---
+> 		[ "${name%.*}" == "$name" ] && \
+> 			name="$name${DOMAIN:+.$DOMAIN}"
+> 
+> 		record="${record:+$record/}$name"
+449c417
+< 	echo "$ip $record" >> $HOSTFILE
+---
+> 	xappend "--address=/$record/$ip"
+528,532d495
+< boot() {
+< 	# Will be launched through hotplug
+< 	return 0
+< }
+< 
+534c497,501
+< 	include /lib/functions
+---
+> 	include /lib/network
+> 	scan_interfaces
+> 
+> 	local lanaddr
+> 	config_get lanaddr "lan" ipaddr
+540,541d506
+< 	procd_set_param file $CONFIGFILE
+< 	procd_set_param respawn
+548d512
+< 	echo "# auto-generated config file from /etc/config/dhcp" > $HOSTFILE
+571,572c535
+< 	local lanaddr
+< 	[ $ADD_LOCAL_HOSTNAME -eq 1 ] && network_get_ipaddr lanaddr "lan" && {
+---
+> 	[ $ADD_LOCAL_HOSTNAME -eq 1 ] && [ -n "$lanaddr" ] && {
+574c537
+< 		dhcp_domain_add "" "$hostname" "$lanaddr"
+---
+> 		dhcp_hostrecord_add "" "${hostname%.$DOMAIN}${DOMAIN:+.$DOMAIN ${hostname%.$DOMAIN}}" "$lanaddr"
+581,586c544
+< 
+< 	config_get odhcpd_is_active odhcpd maindhcp
+< 	if [ "$odhcpd_is_active" != "1" ]; then
+< 		config_foreach dhcp_add dhcp
+< 	fi
+< 
+---
+> 	config_foreach dhcp_add dhcp
+601,605d558
+< reload_service() {
+< 	rc_procd start_service "$@"
+< 	return 0
+< }
+< 
+611d563
+< 	rm -f /var/run/dnsmasq.*.dhcp

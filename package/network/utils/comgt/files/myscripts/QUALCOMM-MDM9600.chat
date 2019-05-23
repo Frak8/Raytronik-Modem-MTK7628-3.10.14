@@ -1,0 +1,12 @@
+#ABORT         'NO CARRIER^M'
+#ABORT         'ERROR^M'
+REPORT         CONNECT^M
+TIMEOUT        120^M
+""             AT^M
+#SAY           "ATE^M" 
+#ECHO          ON^M 
+#OK            ATH^M
+#OK            ATP^M
+#OK            AT+CGDCONT=3,"IPV4V6","WONET","0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0",0,0,0,0^M
+OK             ATD*99#^M
+CONNECT        100000000^M 
