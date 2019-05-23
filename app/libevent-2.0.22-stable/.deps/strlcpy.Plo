@@ -1,0 +1,67 @@
+strlcpy.lo: strlcpy.c \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/types.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/features.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/uClibc_config.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/cdefs.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/types.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/wordsize.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/include/stddef.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/typesizes.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/pthreadtypes.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/endian.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/endian.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/byteswap.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/byteswap.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/byteswap-common.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sgidefs.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/time.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/select.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/select.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/sigset.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/time.h \
+ /yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/sysmacros.h \
+ include/event2/event-config.h
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/types.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/features.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/uClibc_config.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/cdefs.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/types.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/wordsize.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/include/stddef.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/typesizes.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/pthreadtypes.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/endian.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/endian.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/byteswap.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/byteswap.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/byteswap-common.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sgidefs.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/time.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/select.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/select.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/sigset.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/bits/time.h:
+
+/yanfa/heqiang/MTK/openwrt-2.6.36/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.6-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.6.4/../../../../mipsel-openwrt-linux-uclibc/sys-include/sys/sysmacros.h:
+
+include/event2/event-config.h:
