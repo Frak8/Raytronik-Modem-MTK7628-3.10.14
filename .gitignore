@@ -7,6 +7,8 @@
 /staging_dir
 /tmp
 /logs
+/feeds
+package/feeds/
 /files
 /package/openwrt-packages
 *.orig
