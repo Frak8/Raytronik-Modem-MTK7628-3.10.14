@@ -3044,6 +3044,7 @@ CONFIG_WPA_MSG_MIN_PRIORITY=3
 # Applications
 #
 CONFIG_PACKAGE_eth_mac=y
+# CONFIG_PACKAGE_lte_helper is not set
 
 #
 # Utilities
