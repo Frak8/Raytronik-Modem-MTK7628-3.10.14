@@ -1,0 +1,61 @@
+#!/bin/bash
+
+
+case "$1" in
+        "--IMSI")
+                echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3
+                ;;
+        "--Provider")
+                echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--SIMstat")
+                echo -ne "AT+CPIN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--SignalQuality")
+                echo -ne "AT+CSQ\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--Reset")
+                echo -ne "AT+CRESET\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--RoamingActive")
+                echo -ne "AT+CREG=2\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--RoamingDActive")
+                echo -ne "AT+CREG=0\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--Irancell")
+                echo -ne "AT+COPS=1,2,"43235"\r\n" | microcom -X -t 10000 /dev/ttyUSB3 ;;
+        "--MCI")
+                echo -ne "AT+COPS=1,2,"43211"\r\n" | microcom -X -t 10000 /dev/ttyUSB3 ;;
+        "--Mobin")
+                echo -ne "AT+COPS=1,2,"43244"\r\n" | microcom -X -t 10000 /dev/ttyUSB3 ;;
+        "--LTE")
+                echo -ne "AT+CNMP=38\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--WCDMA")           
+                echo -ne "AT+CNMP=14\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--Auto")           
+                echo -ne "AT+CNMP=2\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+        "--Netstat")                                                             
+                echo -ne "AT+CPSI?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;; 
+
+
+
+
+
+        *)
+                echo "Unknow parameter Please Use of the valid parameters
+                --IMSI 
+                --Provider
+                --SIMstat 
+                --SignalQuality
+                --Reset
+                --RoamingActive
+                --RoamingDActive
+                --Irancell
+                --MCI
+                --Mobin
+                --LTE
+                --WCDMA
+                --Auto
+                --Netstat               
+
+
+               " ;;
+
+
+
+esac
