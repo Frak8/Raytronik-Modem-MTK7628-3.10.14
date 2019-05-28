@@ -1,10 +1,26 @@
 #!/bin/bash
 
+while true;do
+echo -ne "AT\r\n" | microcom -X -t 10 /dev/ttyUSB3 >> /dev/null 2>&1
+if [  $? -eq 0 ]
+then
+   break
+else
+   sleep 1
+fi
+
+done
+
+
 
 case "$1" in
         "--IMSI")
-                echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3
+                echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3 | awk /^[0-9]/ | tr -d "\r"
                 ;;
+        "--ICCID")
+                echo -ne "AT+CICCID\r\n" | microcom -X -t 100 /dev/ttyUSB3 | grep "+ICCID:" | tr -d "+ICCID: "
+                ;;
+
         "--Provider")
                 echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
         "--SIMstat")
@@ -18,11 +34,11 @@ case "$1" in
         "--RoamingDActive")
                 echo -ne "AT+CREG=0\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
         "--Irancell")
-                echo -ne "AT+COPS=1,2,"43235"\r\n" | microcom -X -t 10000 /dev/ttyUSB3 ;;
+                echo -ne "AT+COPS=1,2,"43235"\r\n" | microcom -X -t 1000 /dev/ttyUSB3 ;;
         "--MCI")
-                echo -ne "AT+COPS=1,2,"43211"\r\n" | microcom -X -t 10000 /dev/ttyUSB3 ;;
+                echo -ne "AT+COPS=1,2,"43211"\r\n" | microcom -X -t 1000 /dev/ttyUSB3 ;;
         "--Mobin")
-                echo -ne "AT+COPS=1,2,"43244"\r\n" | microcom -X -t 10000 /dev/ttyUSB3 ;;
+                echo -ne "AT+COPS=1,2,"43244"\r\n" | microcom -X -t 1000 /dev/ttyUSB3 ;;
         "--LTE")
                 echo -ne "AT+CNMP=38\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
         "--WCDMA")           
@@ -52,8 +68,8 @@ case "$1" in
                 --WCDMA
                 --Auto
                 --Netstat               
-
-
+                --ICCID
+                
                " ;;
 
 
