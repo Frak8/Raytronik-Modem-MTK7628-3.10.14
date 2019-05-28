@@ -12,21 +12,99 @@ fi
 done
 
 
+imsi()
+{
+local Bval=$(echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3)
+
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then
+
+echo ""
+
+else 
+
+echo "$Bval"| awk /^[0-9]/ | tr -d "\r"
+
+fi
+}
+
+iccid()    
+{     
+local Bval=$(echo -ne "AT+CICCID\r\n" | microcom -X -t 100 /dev/ttyUSB3)
+                                                                      
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                
+                                                                      
+echo ""                                                               
+                                                                      
+else                                                                  
+                                                                      
+echo "$Bval"| grep "+ICCID:" | tr -d "+ICCID: "                               
+                                                      
+fi                                                    
+}
+
+provider()                                                                              
+{                                                                                    
+local Bval=$(echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3)
+                                                                                                            
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                       
+                                                                                                            
+echo ""                                                                                                     
+                                                                                                            
+else                                                                                                        
+                                                                                                            
+echo "$Bval"| grep "+CSPN: "  | tr -d ":" | sed 's/\<CSPN\>//g'
+
+                                                                                                            
+fi                                                                                                          
+}
+
+simstat()                                                                                                  
+{                                                                                                           
+local Bval=$(echo -ne "AT+CPIN?\r\n" | microcom -X -t 100 /dev/ttyUSB3)                                     
+                                                                                                            
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                       
+                                                                                                            
+echo ""                                                                                                     
+                                                                                                            
+else                                                                                                        
+                                                                                                            
+echo "$Bval"| grep "+CPIN: "  | tr -d "1\",+:" | sed 's/\<CPIN\>//g'                                                                                                
+                                                                                                            
+fi                                                                                                          
+}  
+
+signalquality()                                                                                                   
+{                                                                                                           
+local Bval=$(echo -ne "AT+CSQ\r\n" | microcom -X -t 100 /dev/ttyUSB3)                                     
+                                                                                                            
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                       
+                                                                                                            
+echo ""                                                                                                     
+                                                                                                            
+else                                                                                                        
+                                                                                                            
+echo "$Bval" | grep "+CSQ: "  | tr -d "+:" | sed 's/\<CSQ\>//g' | sed 's/\<99\>//g' | tr -d ", "                                                                                                
+                                                                                                            
+fi                                                                                                          
+}
+
 
 case "$1" in
         "--IMSI")
-                echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3 | awk /^[0-9]/ | tr -d "\r"
+                imsi
                 ;;
         "--ICCID")
-                echo -ne "AT+CICCID\r\n" | microcom -X -t 100 /dev/ttyUSB3 | grep "+ICCID:" | tr -d "+ICCID: "
+              
+                  iccid
                 ;;
 
         "--Provider")
-                echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+                provider
+                 ;;
         "--SIMstat")
-                echo -ne "AT+CPIN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+                simstat ;;
         "--SignalQuality")
-                echo -ne "AT+CSQ\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+                signalquality ;;
         "--Reset")
                 echo -ne "AT+CRESET\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
         "--RoamingActive")
