@@ -14,9 +14,9 @@ done
 
 imsi()
 {
-local Bval=$(echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3)
+local Bval=$(cat /tmp/imsi) 
 
-if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER\|cat: " ) ]]; then
 
 echo ""
 
@@ -29,9 +29,9 @@ fi
 
 iccid()    
 {     
-local Bval=$(echo -ne "AT+CICCID\r\n" | microcom -X -t 100 /dev/ttyUSB3)
+local Bval=$(cat /tmp/iccid)
                                                                       
-if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER\|cat:" ) ]]; then                
                                                                       
 echo ""                                                               
                                                                       
@@ -44,15 +44,17 @@ fi
 
 provider()                                                                              
 {                                                                                    
-local Bval=$(echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3)
+local Bval=$(cat /tmp/provider) 
                                                                                                             
-if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                       
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER\|cat:" ) ]]; then                       
                                                                                                             
 echo ""                                                                                                     
                                                                                                             
 else                                                                                                        
                                                                                                             
-echo "$Bval"| grep "+CSPN: "  | tr -d ":" | sed 's/\<CSPN\>//g'
+echo "$Bval"| grep "+CSPN: "  | tr -d ":1+\"," | sed 's/\<CSPN\>//g'
+
+
 
                                                                                                             
 fi                                                                                                          
@@ -60,9 +62,9 @@ fi
 
 simstat()                                                                                                  
 {                                                                                                           
-local Bval=$(echo -ne "AT+CPIN?\r\n" | microcom -X -t 100 /dev/ttyUSB3)                                     
+local Bval=$(cat /tmp/simstat)                                   
                                                                                                             
-if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                       
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER\|cat:" ) ]]; then                       
                                                                                                             
 echo ""                                                                                                     
                                                                                                             
@@ -75,9 +77,9 @@ fi
 
 signalquality()                                                                                                   
 {                                                                                                           
-local Bval=$(echo -ne "AT+CSQ\r\n" | microcom -X -t 100 /dev/ttyUSB3)                                     
+local Bval=$(cat /tmp/signalquality)                                    
                                                                                                             
-if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER" ) ]]; then                       
+if [[ $(("$Bval") 2>&1 | grep "ERROR\|microcom\|DELAYED\|BUSY\|NO CARRIER\|cat:" ) ]]; then                       
                                                                                                             
 echo ""                                                                                                     
                                                                                                             
@@ -124,7 +126,7 @@ case "$1" in
         "--Auto")           
                 echo -ne "AT+CNMP=2\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
         "--Netstat")                                                             
-                echo -ne "AT+CPSI?\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;; 
+                echo -ne "AT+CPSI?\r\n" | microcom -X -t 500 /dev/ttyUSB3 ;; 
 
 
 

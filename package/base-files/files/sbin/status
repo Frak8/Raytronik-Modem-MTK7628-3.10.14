@@ -1,12 +1,37 @@
 #!/bin/sh
 
-rm -rf /tmp/providername
-rm -rf /tmp/signal1 
-rm -rf /tmp/signal2
+
+rm -rf /tmp/signal1
+rm -rf /tmp/imsi
+rm -rf /tmp/iccid
+rm -rf /tmp/provider
+rm -rf /tmp/simstat
+rm -rf /tmp/signalquality 
+
 while true;do
-echo -ne "AT+CSPN?\r\n" | microcom -X -t 10 /dev/ttyUSB3 > /tmp/providername
-echo -ne "AT+CSQ\r\n" | microcom -X -t 10 /dev/ttyUSB3 > /tmp/signal1
-echo -ne "AT+CPSI?\r\n" | microcom -X -t 500 /dev/ttyUSB3 > /tmp/signal2
+
+
+while true;do
+echo -ne "AT\r\n" | microcom -X -t 10 /dev/ttyUSB3 >> /dev/null 2>&1
+if [  $? -eq 0 ]
+then
+   break
+else
+   sleep 1
+fi
+
+done
+
+
+
+
+echo -ne "AT+CPSI?\r\n" | microcom -X -t 500 /dev/ttyUSB3 > /tmp/signal1
+echo -ne "AT+CSQ\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/signalquality
+echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/imsi
+echo -ne "AT+CICCID\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/iccid
+echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/provider
+echo -ne "AT+CPIN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/simstat
+
 
 
 
