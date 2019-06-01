@@ -120,11 +120,11 @@ case "$1" in
         "--Mobin")
                 echo -ne "AT+COPS=1,2,"43244"\r\n" | microcom -X -t 1000 /dev/ttyUSB3 ;;
         "--LTE")
-                echo -ne "AT+CNMP=38\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+                echo -ne "AT+CNMP=38\r\n" | microcom -X -t 2000 /dev/ttyUSB3 ;;
         "--WCDMA")           
-                echo -ne "AT+CNMP=14\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+                echo -ne "AT+CNMP=14\r\n" | microcom -X -t 20000 /dev/ttyUSB3 ;;
         "--Auto")           
-                echo -ne "AT+CNMP=2\r\n" | microcom -X -t 100 /dev/ttyUSB3 ;;
+                echo -ne "AT+CNMP=2\r\n" | microcom -X -t 2000 /dev/ttyUSB3 ;;
         "--Netstat")                                                             
                 echo -ne "AT+CPSI?\r\n" | microcom -X -t 500 /dev/ttyUSB3 ;; 
 
