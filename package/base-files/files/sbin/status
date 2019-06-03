@@ -7,7 +7,7 @@ rm -rf /tmp/iccid
 rm -rf /tmp/provider
 rm -rf /tmp/simstat
 rm -rf /tmp/signalquality 
-
+rm -rf /tmp/mode
 while true;do
 
 
@@ -31,7 +31,7 @@ echo -ne "AT+CIMI\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/imsi
 echo -ne "AT+CICCID\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/iccid
 echo -ne "AT+CSPN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/provider
 echo -ne "AT+CPIN?\r\n" | microcom -X -t 100 /dev/ttyUSB3 > /tmp/simstat
-
+cat /tmp/signal1 | grep "+CPSI: " | tr -d "+:" | sed 's/\<CPSI\>//g'| awk -F, '{print $1}'  > /tmp/mode
 
 
 

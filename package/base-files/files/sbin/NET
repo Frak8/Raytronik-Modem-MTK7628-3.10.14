@@ -1,0 +1,40 @@
+#!/bin/bash
+case "$1" in
+
+
+        "--Mode") 
+        cat /tmp/mode ;;
+        #cat /tmp/signal1 | grep "+CPSI: " | tr -d "+:" | sed 's/\<CPSI\>//g'| awk -F, '{print $2}' ;;
+
+        
+        "--MMC-MNC")
+
+        cat /tmp/signal1 | grep "+CPSI: " | tr -d "+:" | sed 's/\<CPSI\>//g'| awk -F, '{print $3}' ;;   
+
+
+
+        "--LAC-TAC")
+        MODE=$(cat /tmp/mode)
+        COMP1="LTE"
+        COMP2="WCDMA"
+        echo "$MODE"
+        if [ "$MODE"=="$COMP1" ]; then 
+        cat /tmp/signal1 | grep "+CPSI: " | tr -d "+:" | sed 's/\<CPSI\>//g'| awk -F, '{print "Trace Area Code(Hex) "$4}' 
+        elif [ "$MODE"=="$COMP2" ]; then 
+        cat /tmp/signal1 | grep "+CPSI: " | tr -d "+:" | sed 's/\<CPSI\>//g'| awk -F, '{print "Local Area Code(Hex) "$4}'
+        fi 
+        ;;
+
+
+
+        *) 
+
+                echo "Undifined switch
+                --Mode
+                --MMC-MNC"
+
+
+
+
+esac
+
