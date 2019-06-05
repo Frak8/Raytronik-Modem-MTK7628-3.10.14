@@ -113,7 +113,7 @@ define Package/base-files/install
 		$(1)/etc/openwrt_version \
 		$(1)/etc/openwrt_release \
 		$(1)/etc/device_info
-
+		$(shell ./version.sh $<)
 	mkdir -p $(1)/CONTROL
 	mkdir -p $(1)/dev
 	mkdir -p $(1)/etc/crontabs
