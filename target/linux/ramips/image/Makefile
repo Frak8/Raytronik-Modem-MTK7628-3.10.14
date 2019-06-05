@@ -69,7 +69,7 @@ define CompressLzma
 endef
 
 define MkImageSysupgrade/squashfs
-	$(eval output_name=$(IMG_PREFIX)-$(2)-$(1)-$(if $(4),$(4),sysupgrade).bin)
+	$(eval output_name=Raytronik-GLP400-$(shell date +"%F-%T")-$(if $(4),$(4),sysupgrade).bin)
 	cat $(KDIR)/vmlinux-$(2).uImage $(KDIR)/root.$(1) > $(KDIR)/$(output_name)
 	$(call prepare_generic_squashfs,$(KDIR)/$(output_name))
 	if [ `stat -c%s "$(KDIR)/$(output_name)"` -gt $(3) ]; then \
