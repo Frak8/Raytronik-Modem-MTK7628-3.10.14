@@ -1902,7 +1902,7 @@ CONFIG_PACKAGE_fstools=y
 CONFIG_PACKAGE_jsonfilter=y
 CONFIG_PACKAGE_libc=y
 CONFIG_PACKAGE_libgcc=y
-# CONFIG_PACKAGE_libpthread is not set
+CONFIG_PACKAGE_libpthread=y
 # CONFIG_PACKAGE_librt is not set
 # CONFIG_PACKAGE_libstdcpp is not set
 # CONFIG_PACKAGE_libthread-db is not set
@@ -1913,7 +1913,7 @@ CONFIG_PACKAGE_netifd=y
 CONFIG_PACKAGE_opkg=y
 # CONFIG_PACKAGE_opkg-smime is not set
 CONFIG_PACKAGE_procd=y
-# CONFIG_PACKAGE_qos-scripts is not set
+CONFIG_PACKAGE_qos-scripts=y
 CONFIG_PACKAGE_resolveip=y
 # CONFIG_PACKAGE_rpcd is not set
 # CONFIG_PACKAGE_sflowovsd is not set
@@ -2163,7 +2163,7 @@ CONFIG_PACKAGE_kmod-lib-crc-ccitt=y
 # CONFIG_PACKAGE_kmod-lib-crc7 is not set
 # CONFIG_PACKAGE_kmod-lib-crc8 is not set
 # CONFIG_PACKAGE_kmod-lib-lzo is not set
-# CONFIG_PACKAGE_kmod-lib-textsearch is not set
+CONFIG_PACKAGE_kmod-lib-textsearch=y
 # CONFIG_PACKAGE_kmod-lib-zlib is not set
 
 #
@@ -2201,20 +2201,20 @@ CONFIG_PACKAGE_kmod-ip6tables=y
 # CONFIG_PACKAGE_kmod-ipt-compat-xtables is not set
 # CONFIG_PACKAGE_kmod-ipt-condition is not set
 CONFIG_PACKAGE_kmod-ipt-conntrack=y
-# CONFIG_PACKAGE_kmod-ipt-conntrack-extra is not set
+CONFIG_PACKAGE_kmod-ipt-conntrack-extra=y
 CONFIG_PACKAGE_kmod-ipt-core=y
 # CONFIG_PACKAGE_kmod-ipt-debug is not set
 # CONFIG_PACKAGE_kmod-ipt-delude is not set
 # CONFIG_PACKAGE_kmod-ipt-dhcpmac is not set
 # CONFIG_PACKAGE_kmod-ipt-dnetmap is not set
 # CONFIG_PACKAGE_kmod-ipt-extra is not set
-# CONFIG_PACKAGE_kmod-ipt-filter is not set
+CONFIG_PACKAGE_kmod-ipt-filter=y
 # CONFIG_PACKAGE_kmod-ipt-fuzzy is not set
 # CONFIG_PACKAGE_kmod-ipt-geoip is not set
 # CONFIG_PACKAGE_kmod-ipt-hashlimit is not set
 # CONFIG_PACKAGE_kmod-ipt-iface is not set
 # CONFIG_PACKAGE_kmod-ipt-ipmark is not set
-# CONFIG_PACKAGE_kmod-ipt-ipopt is not set
+CONFIG_PACKAGE_kmod-ipt-ipopt=y
 # CONFIG_PACKAGE_kmod-ipt-ipp2p is not set
 # CONFIG_PACKAGE_kmod-ipt-iprange is not set
 # CONFIG_PACKAGE_kmod-ipt-ipsec is not set
@@ -2270,7 +2270,7 @@ CONFIG_PACKAGE_kmod-ipt-nathelper=y
 # CONFIG_PACKAGE_kmod-gigaset is not set
 # CONFIG_PACKAGE_kmod-hfcmulti is not set
 # CONFIG_PACKAGE_kmod-hfcpci is not set
-# CONFIG_PACKAGE_kmod-ifb is not set
+CONFIG_PACKAGE_kmod-ifb=y
 # CONFIG_PACKAGE_kmod-libphy is not set
 # CONFIG_PACKAGE_kmod-macvlan is not set
 CONFIG_PACKAGE_kmod-mii=y
@@ -2337,8 +2337,8 @@ CONFIG_PACKAGE_kmod-pppox=y
 # CONFIG_PACKAGE_kmod-pptp is not set
 # CONFIG_PACKAGE_kmod-rxrpc is not set
 # CONFIG_PACKAGE_kmod-sched is not set
-# CONFIG_PACKAGE_kmod-sched-connmark is not set
-# CONFIG_PACKAGE_kmod-sched-core is not set
+CONFIG_PACKAGE_kmod-sched-connmark=y
+CONFIG_PACKAGE_kmod-sched-core=y
 # CONFIG_PACKAGE_kmod-sched-esfq is not set
 # CONFIG_PACKAGE_kmod-sctp is not set
 # CONFIG_PACKAGE_kmod-sit is not set
@@ -2346,7 +2346,7 @@ CONFIG_PACKAGE_kmod-slhc=y
 # CONFIG_PACKAGE_kmod-slip is not set
 # CONFIG_PACKAGE_kmod-stp is not set
 # CONFIG_PACKAGE_kmod-trelay is not set
-# CONFIG_PACKAGE_kmod-tun is not set
+CONFIG_PACKAGE_kmod-tun=y
 # CONFIG_PACKAGE_kmod-veth is not set
 # CONFIG_PACKAGE_kmod-wprobe is not set
 
@@ -2732,7 +2732,22 @@ CONFIG_PACKAGE_libxtables=y
 #
 # CONFIG_PACKAGE_libaxtls is not set
 # CONFIG_PACKAGE_libcyassl is not set
-# CONFIG_PACKAGE_libgnutls is not set
+CONFIG_PACKAGE_libgnutls=y
+
+#
+# Configuration
+#
+CONFIG_GNUTLS_DTLS_SRTP=y
+CONFIG_GNUTLS_ALPN=y
+CONFIG_GNUTLS_OCSP=y
+# CONFIG_GNUTLS_CRYPTODEV is not set
+CONFIG_GNUTLS_HEARTBEAT=y
+# CONFIG_GNUTLS_OPENPGP is not set
+# CONFIG_GNUTLS_SRP is not set
+CONFIG_GNUTLS_PSK=y
+CONFIG_GNUTLS_ANON=y
+# CONFIG_GNUTLS_PKCS11 is not set
+# CONFIG_GNUTLS_EXT_LIBTASN1 is not set
 # CONFIG_PACKAGE_libgnutls-openssl is not set
 # CONFIG_PACKAGE_libmatrixssl is not set
 # CONFIG_PACKAGE_libopenssl is not set
@@ -2899,7 +2914,7 @@ CONFIG_PACKAGE_libfreecwmp=y
 # CONFIG_PACKAGE_libgd is not set
 # CONFIG_PACKAGE_libgdbm is not set
 # CONFIG_PACKAGE_libgee is not set
-# CONFIG_PACKAGE_libgmp is not set
+CONFIG_PACKAGE_libgmp=y
 # CONFIG_PACKAGE_libgpg-error is not set
 # CONFIG_PACKAGE_libgpgme is not set
 # CONFIG_PACKAGE_libgphoto2 is not set
@@ -2968,7 +2983,12 @@ CONFIG_PACKAGE_libncurses=y
 # CONFIG_PACKAGE_libnetfilter-log is not set
 # CONFIG_PACKAGE_libnetfilter-queue is not set
 CONFIG_PACKAGE_libnetsnmp=y
-# CONFIG_PACKAGE_libnettle is not set
+CONFIG_PACKAGE_libnettle=y
+
+#
+# Configuration
+#
+# CONFIG_LIBNETTLE_MINI is not set
 # CONFIG_PACKAGE_libnewt is not set
 # CONFIG_PACKAGE_libnfc is not set
 CONFIG_PACKAGE_libnfnetlink=y
@@ -2979,6 +2999,7 @@ CONFIG_PACKAGE_libnl-tiny=y
 # CONFIG_PACKAGE_libogg is not set
 # CONFIG_PACKAGE_liboil is not set
 # CONFIG_PACKAGE_libol is not set
+# CONFIG_PACKAGE_libopencdk is not set
 # CONFIG_PACKAGE_libopenldap is not set
 # CONFIG_PACKAGE_libopensc is not set
 # CONFIG_PACKAGE_liboping is not set
@@ -3071,7 +3092,7 @@ CONFIG_PACKAGE_libuci-lua=y
 # CONFIG_PACKAGE_libwrap is not set
 # CONFIG_PACKAGE_libwxbase is not set
 # CONFIG_PACKAGE_libxapian is not set
-# CONFIG_PACKAGE_libxml2 is not set
+CONFIG_PACKAGE_libxml2=y
 # CONFIG_PACKAGE_libxslt is not set
 # CONFIG_PACKAGE_libzip is not set
 # CONFIG_PACKAGE_libzstream is not set
@@ -3102,7 +3123,7 @@ CONFIG_PACKAGE_uclibcxx=y
 # CONFIG_PACKAGE_xmlrpc-c-server is not set
 # CONFIG_PACKAGE_xmlrpc-c-server-abyss is not set
 # CONFIG_PACKAGE_xmpp4r is not set
-# CONFIG_PACKAGE_zlib is not set
+CONFIG_PACKAGE_zlib=y
 
 #
 # LuCI
@@ -3167,7 +3188,7 @@ CONFIG_PACKAGE_luci-app-upnp=y
 #
 # 6. Protocols
 #
-# CONFIG_PACKAGE_luci-proto-openconnect is not set
+CONFIG_PACKAGE_luci-proto-openconnect=y
 
 #
 # 9. Freifunk
@@ -3202,7 +3223,7 @@ CONFIG_PACKAGE_luci-mod-admin-full=y
 #
 # CONFIG_PACKAGE_luci-app-commands is not set
 CONFIG_PACKAGE_luci-app-firewall=y
-# CONFIG_PACKAGE_luci-app-qos is not set
+CONFIG_PACKAGE_luci-app-qos=y
 
 #
 # 4. Themes
@@ -3675,18 +3696,18 @@ CONFIG_PACKAGE_iptables=y
 # CONFIG_PACKAGE_iptables-mod-account is not set
 # CONFIG_PACKAGE_iptables-mod-chaos is not set
 # CONFIG_PACKAGE_iptables-mod-condition is not set
-# CONFIG_PACKAGE_iptables-mod-conntrack-extra is not set
+CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
 # CONFIG_PACKAGE_iptables-mod-delude is not set
 # CONFIG_PACKAGE_iptables-mod-dhcpmac is not set
 # CONFIG_PACKAGE_iptables-mod-dnetmap is not set
 # CONFIG_PACKAGE_iptables-mod-extra is not set
-# CONFIG_PACKAGE_iptables-mod-filter is not set
+CONFIG_PACKAGE_iptables-mod-filter=y
 # CONFIG_PACKAGE_iptables-mod-fuzzy is not set
 # CONFIG_PACKAGE_iptables-mod-geoip is not set
 # CONFIG_PACKAGE_iptables-mod-hashlimit is not set
 # CONFIG_PACKAGE_iptables-mod-iface is not set
 # CONFIG_PACKAGE_iptables-mod-ipmark is not set
-# CONFIG_PACKAGE_iptables-mod-ipopt is not set
+CONFIG_PACKAGE_iptables-mod-ipopt=y
 # CONFIG_PACKAGE_iptables-mod-ipp2p is not set
 # CONFIG_PACKAGE_iptables-mod-iprange is not set
 # CONFIG_PACKAGE_iptables-mod-ipsec is not set
@@ -3713,6 +3734,7 @@ CONFIG_PACKAGE_iptables=y
 # CONFIG_PACKAGE_iptaccount is not set
 # CONFIG_PACKAGE_knock is not set
 # CONFIG_PACKAGE_knockd is not set
+# CONFIG_PACKAGE_l7-protocols is not set
 # CONFIG_PACKAGE_miniupnpc is not set
 CONFIG_PACKAGE_miniupnpd=y
 # CONFIG_PACKAGE_natpmp is not set
@@ -3977,7 +3999,7 @@ CONFIG_PACKAGE_ip=y
 # CONFIG_PACKAGE_smcroute is not set
 # CONFIG_PACKAGE_ss is not set
 # CONFIG_PACKAGE_sslh is not set
-# CONFIG_PACKAGE_tc is not set
+CONFIG_PACKAGE_tc=y
 # CONFIG_PACKAGE_tcpproxy is not set
 # CONFIG_PACKAGE_udp-broadcast-relay is not set
 # CONFIG_PACKAGE_vis is not set
@@ -4104,7 +4126,13 @@ CONFIG_PACKAGE_ip=y
 # CONFIG_PACKAGE_matrixtunnel is not set
 # CONFIG_PACKAGE_n2n is not set
 # CONFIG_PACKAGE_ocserv is not set
-# CONFIG_PACKAGE_openconnect is not set
+CONFIG_PACKAGE_openconnect=y
+
+#
+# Configuration
+#
+CONFIG_OPENCONNECT_GNUTLS=y
+# CONFIG_OPENCONNECT_OPENSSL is not set
 # CONFIG_PACKAGE_openl2tp-full is not set
 # CONFIG_PACKAGE_openl2tp-mini is not set
 # CONFIG_PACKAGE_opennhrp is not set
